@@ -4,13 +4,27 @@ const inventory = require('../datasets/data.json');
 
 
 // this function calculates the total price with discount offered
-module.exports.checkout = (cartItems) => {
+module.exports.checkout = (payload) => {
     try {
-        const total = new CheckoutModel(cartItems);
+        const cartItems = payload.items.split(",");
+        let result = null,
+            code = HttpStatus.OK,
+            err = null;
+
+        // input validation
+        
+        if (Array.isArray(cartItems) && cartItems.length) {
+            const total = new CheckoutModel(cartItems);
+            result = { "total": total.calculate() };
+        } else {
+            code = HttpStatus.BAD_REQUEST
+            err = "Invalid input, please refer to README.md"
+        }
+
         return {
-            "code": HttpStatus.OK,
-            "result": { "total": total.calculate() },
-            "error": null
+            "code": code,
+            "result": result,
+            "error": err
         }
     } catch (e) {
         return {
