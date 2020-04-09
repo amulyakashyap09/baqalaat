@@ -1,0 +1,17 @@
+{
+  "VOUCHER": {
+    "code": "VOUCHER",
+    "name": "Baqalaat Voucher",
+    "price": 5
+  },
+  "TSHIRT": {
+    "code": "TSHIRT",
+    "name": "Baqalaat T-Shirt",
+    "price": 20
+  },
+  "MUG": {
+    "code": "MUG",
+    "name": "Baqalaat Coffee Mug",
+    "price": 7.5
+  }
+}

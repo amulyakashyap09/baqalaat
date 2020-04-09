@@ -1,0 +1,10 @@
+{
+  "VOUCHER": {
+    "minQty": 3,
+    "discount": 33.33
+  },
+  "TSHIRT": {
+    "minQty": 3,
+    "discount": 5
+  }
+}
