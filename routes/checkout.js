@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const checkoutController = require("../controllers/checkout");
 
-/* GET products listing. */
 router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
+
+/* GET products listing. */
 
 router.get('/inventory', function(req, res, next) {
     const result = checkoutController.inventory(req.body.cartItems);
@@ -16,8 +17,10 @@ router.get('/inventory', function(req, res, next) {
     }
 });
 
+/* GET total of items in the carts. */
+
 router.get('/total', function(req, res, next) {
-    const result = checkoutController.checkout(req.query.items.split(","));
+    const result = checkoutController.checkout(req.query);
     if (result.error){
     	console.error("e : ", result.error)
 	    res.status(result.code).send(result.error);
